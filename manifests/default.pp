@@ -141,6 +141,7 @@ node 'web.local' {
   exec { 'bundle_install':
     command	=> '/bin/bash -c "source /etc/profile.d/rvm.sh && bundle install"',
     user	=> 'vagrant',
+    timeout => 3600,
     environment	=> ['RAILS_ENV=production'],
     cwd		=> "${rails_home}/publify",
     creates	=> "${rails_home}/publify/Gemfile.lock",
