@@ -1,0 +1,21 @@
+
+
+-- Prerequisites
+
+    - Vagrant
+    - VirtualBox
+
+
+-- Usage:
+
+$ vagrant up 
+
+
+Be patient as it takes a while to provision the 'web' box but eventually and with a little bit
+of luck you should be able to point your browser at:
+
+http://192.168.10.2		# connect through haproxy
+
+or
+
+http://192.168.10.3:3000	# direct connection to Rails
