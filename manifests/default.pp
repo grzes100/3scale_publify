@@ -123,7 +123,7 @@ node 'web.local' {
   }
 
  exec { 'git clone':
-    command => "git clone $publify_git",
+    command => "git clone $publify_git && sed -i 's/config.serve_static_files/#config_serve_static_files/' publify/config/environments/production.rb",
     user    => 'vagrant',
     cwd     => "${rails_home}",
     creates => "${rails_home}/publify/config/database.yml.mysql",
@@ -142,7 +142,6 @@ node 'web.local' {
     command	=> '/bin/bash -c "source /etc/profile.d/rvm.sh && bundle install"',
     user	=> 'vagrant',
     timeout => 3600,
-    environment	=> ['RAILS_ENV=production'],
     cwd		=> "${rails_home}/publify",
     creates	=> "${rails_home}/publify/Gemfile.lock",
     require	=> [ Exec['config_database'], Package['libcurl4-openssl-dev'], Rvm_gem['bundler'] ];
